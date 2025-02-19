@@ -43,14 +43,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-blue-600">InnovationLab</span>
+            <span className="text-2xl font-bold text-blue-200">InnovationLab</span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
-                <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600">
+                <button className="flex items-center space-x-1 text-gray-200 hover:text-blue-300">
                   <span>{item.title}</span>
                   {item.dropdown && <ChevronDown className="w-4 h-4" />}
                 </button>

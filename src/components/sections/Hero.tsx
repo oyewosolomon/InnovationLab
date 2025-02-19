@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
+    <div className="relative min-h-screen pt-16 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="h-full w-full bg-[url('/api/placeholder/20/20')] bg-repeat"></div>
@@ -64,7 +64,7 @@ const Hero = () => {
                   {[...Array(4)].map((_, i) => (
                     <img
                       key={i}
-                      src={`/api/placeholder/32/32`}
+                      src={`https://randomuser.me/api/portraits/men/${50+i}.jpg`}
                       alt="User"
                       className="w-8 h-8 rounded-full border-2 border-gray-800"
                     />
