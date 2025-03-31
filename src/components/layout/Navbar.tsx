@@ -77,7 +77,7 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-indigo-600">
+            <button className={`${isScrolled?'text-gray-600':'text-gray-200' }  hover:text-indigo-600`}>
               Sign In
             </button>
             <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">

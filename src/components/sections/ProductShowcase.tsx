@@ -72,9 +72,10 @@ const ProductShowcase = () => {
     { name: "Amazon", logo: "/images/amazon.svg" },
     { name: "google", logo: "/images/google.svg" },
     { name: "Drive", logo: "/images/drive.svg" },
-    { name: "Drive", logo: "/images/drive.svg" },
+    { name: "bitly", logo: "/images/bitly.svg" },
     { name: "dropbox", logo: "/images/dropbox.svg" },
     { name: "buffer", logo: "/images/buffer.svg" },
+    { name: "behance", logo: "/images/behance.svg" },
   ];
   
 
@@ -172,7 +173,7 @@ const ProductShowcase = () => {
           <h3 className="text-center text-lg font-semibold text-gray-900 mb-8">
             Integrates with your favorite tools
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-7 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-3 md:grid-cols-8 gap-8 items-center justify-items-center">
           {integrationPartners.map((partner, index) => (
             <img
               key={index}
