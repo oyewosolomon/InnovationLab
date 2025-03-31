@@ -67,12 +67,23 @@ const ProductShowcase = () => {
     }
   ];
 
+  const integrationPartners = [
+    { name: "Apple", logo: "/images/apple.svg" },
+    { name: "Amazon", logo: "/images/amazon.svg" },
+    { name: "google", logo: "/images/google.svg" },
+    { name: "Drive", logo: "/images/drive.svg" },
+    { name: "Drive", logo: "/images/drive.svg" },
+    { name: "dropbox", logo: "/images/dropbox.svg" },
+    { name: "buffer", logo: "/images/buffer.svg" },
+  ];
+  
+
   return (
     <div className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
             Platform Features
           </h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -94,19 +105,19 @@ const ProductShowcase = () => {
                   onClick={() => setActiveFeature(index)}
                   className={`w-full text-left p-6 rounded-xl transition-all duration-300 ${
                     activeFeature === index
-                      ? 'bg-blue-50 border-blue-500 border shadow-sm'
-                      : 'border border-gray-200 hover:border-blue-300'
+                      ? 'bg-indigo-50 border-indigo-500 border shadow-sm'
+                      : 'border border-gray-200 hover:border-indigo-300'
                   }`}
                 >
                   <div className="flex items-start">
                     <div className={`p-2 rounded-lg ${
-                      activeFeature === index ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
+                      activeFeature === index ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600'
                     }`}>
                       {feature.icon}
                     </div>
                     <div className="ml-4">
                       <h3 className={`font-medium ${
-                        activeFeature === index ? 'text-blue-600' : 'text-gray-900'
+                        activeFeature === index ? 'text-indigo-600' : 'text-gray-900'
                       }`}>
                         {feature.title}
                       </h3>
@@ -139,7 +150,7 @@ const ProductShowcase = () => {
                 {features[activeFeature].benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0">
-                      <ChevronRight className="h-6 w-6 text-blue-500" />
+                      <ChevronRight className="h-6 w-6 text-indigo-500" />
                     </div>
                     <p className="ml-3 text-gray-500">{benefit}</p>
                   </div>
@@ -147,7 +158,7 @@ const ProductShowcase = () => {
               </div>
 
               <div className="mt-8">
-                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Learn More
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </button>
@@ -161,15 +172,15 @@ const ProductShowcase = () => {
           <h3 className="text-center text-lg font-semibold text-gray-900 mb-8">
             Integrates with your favorite tools
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-            {[...Array(4)].map((_, index) => (
-              <img
-                key={index}
-                src={`/api/placeholder/120/40`}
-                alt={`Integration Partner ${index + 1}`}
-                className="h-12 object-contain"
-              />
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-7 gap-8 items-center justify-items-center">
+          {integrationPartners.map((partner, index) => (
+            <img
+              key={index}
+              src={partner.logo}
+              alt={partner.name}
+              className="h-12 object-contain"
+            />
+          ))}
           </div>
         </div>
       </div>

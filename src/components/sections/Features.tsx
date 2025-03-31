@@ -46,7 +46,7 @@ const FeaturesSection = () => {
     <div className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Features</h2>
+          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
             Everything you need to manage research
           </p>
@@ -61,9 +61,9 @@ const FeaturesSection = () => {
               key={index}
               className="relative group bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-teal-500 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-teal-500 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur"></div>
               <div className="relative bg-white p-6 rounded-xl">
-                <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">{feature.title}</h3>

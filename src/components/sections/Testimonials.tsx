@@ -30,7 +30,7 @@ const Testimonials = () => {
     <div className="bg-gray-900 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-base text-blue-400 font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-indigo-400 font-semibold tracking-wide uppercase">
             Testimonials
           </h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-white sm:text-4xl">
@@ -65,7 +65,7 @@ const Testimonials = () => {
                   <div className="text-gray-400 text-sm">
                     {testimonial.role}
                   </div>
-                  <div className="text-blue-400 text-sm">
+                  <div className="text-indigo-400 text-sm">
                     {testimonial.institution}
                   </div>
                 </div>

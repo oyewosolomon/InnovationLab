@@ -20,18 +20,6 @@ const Footer = () => {
       { label: 'Careers', href: '#' },
       { label: 'News', href: '#' },
       { label: 'Contact', href: '#' }
-    ],
-    resources: [
-      { label: 'Blog', href: '#' },
-      { label: 'Documentation', href: '#' },
-      { label: 'Community', href: '#' },
-      { label: 'Case Studies', href: '#' }
-    ],
-    legal: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
-      { label: 'Licenses', href: '#' }
     ]
   };
 
@@ -54,9 +42,9 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                  className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500"
                 />
-                <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg flex items-center transition-colors">
+                <button className="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-lg flex items-center transition-colors">
                   Subscribe
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </button>
@@ -68,7 +56,7 @@ const Footer = () => {
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="col-span-2">
             <div className="text-2xl font-bold text-white mb-4">InnovationLab</div>

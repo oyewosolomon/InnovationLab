@@ -59,7 +59,7 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
             Pricing Plans
           </h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -101,13 +101,13 @@ const Pricing = () => {
               key={index}
               className={`relative rounded-2xl ${
                 plan.highlighted
-                  ? 'bg-white shadow-xl border-2 border-blue-500 scale-105'
+                  ? 'bg-white shadow-xl border-2 border-indigo-500 scale-105'
                   : 'bg-white shadow-lg border border-gray-100'
               } p-8 transition-all duration-300 hover:shadow-xl`}
             >
               {plan.highlighted && (
                 <div className="absolute top-0 right-6 transform -translate-y-1/2">
-                  <span className="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  <span className="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
                     Most Popular
                   </span>
                 </div>
@@ -140,7 +140,7 @@ const Pricing = () => {
               <button
                 className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 ${
                   plan.highlighted
-                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                 }`}
               >
@@ -176,7 +176,7 @@ const Pricing = () => {
             ].map((faq, index) => (
               <div key={index} className="bg-gray-50 rounded-lg p-6">
                 <h4 className="text-lg font-medium text-gray-900 mb-2 flex items-center">
-                  <HelpCircle className="w-5 h-5 text-blue-500 mr-2" />
+                  <HelpCircle className="w-5 h-5 text-indigo-500 mr-2" />
                   {faq.q}
                 </h4>
                 <p className="text-gray-600">{faq.a}</p>

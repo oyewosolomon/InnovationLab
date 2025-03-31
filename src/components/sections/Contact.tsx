@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { 
-  MapPin, 
-  Phone, 
   Mail, 
   MessageSquare, 
   Book, 
   Users,
   Clock,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  HelpCircle,
+  Send
 } from 'lucide-react';
-import 'leaflet/dist/leaflet.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,31 +20,7 @@ const Contact = () => {
     message: ''
   });
 
-  const [activeLocation, setActiveLocation] = useState(0);
-
-  const locations = [
-    {
-      city: "Boston",
-      country: "USA",
-      address: "100 Innovation Drive",
-      phone: "+1 (617) 555-0123",
-      coordinates: [42.3601, -71.0589] as [number, number]
-    },
-    {
-      city: "London",
-      country: "UK",
-      address: "15 Research Square",
-      phone: "+44 20 7123 4567",
-      coordinates: [51.5074, -0.1278] as [number, number]
-    },
-    {
-      city: "Singapore",
-      country: "Singapore",
-      address: "88 Science Park Drive",
-      phone: "+65 6789 0123",
-      coordinates: [1.3521, 103.8198] as [number, number]
-    }
-  ];
+  const [activeCategory, setActiveCategory] = useState('general');
 
   const supportOptions = [
     {
@@ -68,27 +43,39 @@ const Contact = () => {
     }
   ];
 
+  const inquiryCategories = [
+    { id: 'general', label: 'General Inquiry', icon: <HelpCircle className="w-5 h-5" /> },
+    { id: 'support', label: 'Technical Support', icon: <MessageSquare className="w-5 h-5" /> },
+    { id: 'feedback', label: 'Feedback', icon: <Send className="w-5 h-5" /> }
+  ];
+
+  const regions = [
+    { id: 'americas', name: 'Americas', email: 'americas@innovationlab.com' },
+    { id: 'emea', name: 'Europe, Middle East & Africa', email: 'emea@innovationlab.com' },
+    { id: 'apac', name: 'Asia Pacific', email: 'apac@innovationlab.com' }
+  ];
+
   return (
-    <div className="bg-gray-50 py-24">
+    <div className="bg-gradient-to-b from-gray-50 to-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">
-            Contact & Support
+          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+            Reach Out
           </h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-            We're Here to Help
+            Let's Start a Conversation
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-            Get in touch with our team for personalized assistance and support
+            Our team is ready to assist with your questions and needs
           </p>
         </div>
 
-        {/* Support Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Support Options Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {supportOptions.map((option, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+            <div key={index} className="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition-shadow border border-gray-100">
+              <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-4">
                 {option.icon}
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">{option.title}</h3>
@@ -101,185 +88,149 @@ const Contact = () => {
           ))}
         </div>
 
-        {/* Interactive Map Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Global Presence</h3>
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <div className="h-96 w-full rounded-lg overflow-hidden">
-              <MapContainer
-                center={locations[activeLocation].coordinates}
-                zoom={3}
-                scrollWheelZoom={false}
-                className="h-full w-full"
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {locations.map((location, index) => (
-                  <Marker
-                    key={index}
-                    position={location.coordinates}
-                    eventHandlers={{
-                      click: () => setActiveLocation(index),
-                    }}
-                  >
-                    <Popup>
-                      <div className="text-center">
-                        <h4 className="font-medium text-gray-900">
-                          {location.city}, {location.country}
-                        </h4>
-                        <p className="text-sm text-gray-500">{location.address}</p>
-                        <p className="text-sm text-gray-500">{location.phone}</p>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
-            </div>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {locations.map((location, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-lg cursor-pointer transition-all duration-300 ${
-                    activeLocation === index
-                      ? 'bg-blue-50 border-blue-200 border'
-                      : 'hover:bg-gray-50'
-                  }`}
-                  onClick={() => setActiveLocation(index)}
-                >
-                  <div className="flex items-start">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center mr-3 ${
-                      activeLocation === index ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
-                    }`}>
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900">
-                        {location.city}, {location.country}
-                      </h4>
-                      <p className="text-sm text-gray-500 mt-1">{location.address}</p>
-                      <p className="text-sm text-gray-500 mt-1">{location.phone}</p>
-                    </div>
-                  </div>
+        {/* Global Regions Section */}
+        <div className="mb-20 bg-indigo-50 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Contact Us Worldwide</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {regions.map((region) => (
+              <div key={region.id} className="bg-white rounded-xl p-6 shadow-sm text-center">
+                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 mx-auto mb-4">
+                  <Globe className="w-6 h-6" />
                 </div>
-              ))}
-            </div>
+                <h4 className="text-lg font-medium text-gray-900 mb-2">{region.name}</h4>
+                <a 
+                  href={`mailto:${region.email}`} 
+                  className="text-indigo-600 hover:text-indigo-800 transition-colors"
+                >
+                  {region.email}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Contact Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white rounded-xl shadow-sm p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Contact Form Section */}
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-5">
+            {/* Sidebar */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-indigo-600 to-indigo-800 p-8 text-white">
+              <h3 className="text-2xl font-bold mb-6">How Can We Help?</h3>
+              <p className="mb-8 text-indigo-100">
+                Select a category that best describes your inquiry and we'll make sure it reaches the right team.
+              </p>
+              
+              <div className="space-y-4">
+                {inquiryCategories.map((category) => (
+                  <div 
+                    key={category.id}
+                    className={`flex items-center p-3 rounded-lg cursor-pointer transition-colors ${
+                      activeCategory === category.id 
+                        ? 'bg-white bg-opacity-20' 
+                        : 'hover:bg-white hover:bg-opacity-10'
+                    }`}
+                    onClick={() => setActiveCategory(category.id)}
+                  >
+                    <div className="bg-indigo-500 bg-opacity-40 p-2 rounded-lg mr-3">
+                      {category.icon}
+                    </div>
+                    <span className="font-medium">{category.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12">
+                <h4 className="text-xl font-medium mb-4">Primary Contact</h4>
+                <div className="flex items-center mb-4">
+                  <Mail className="w-5 h-5 mr-3" />
+                  <span>support@innovationlab.com</span>
+                </div>
+                <div className="p-4 bg-indigo-700 bg-opacity-40 rounded-lg mt-8">
+                  <h5 className="font-medium mb-2">Support Hours</h5>
+                  <p className="text-sm text-indigo-100">
+                    Our team is available Monday through Friday, 24/7.<br />
+                    Weekend support: 9:00 AM - 6:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Form */}
+            <div className="lg:col-span-3 p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
+                </div>
+                
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name
+                    Organization
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    value={formData.organization}
+                    onChange={(e) => setFormData({...formData, organization: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject
                   </label>
                   <input
                     type="text"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
                   />
                 </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
+                    Message
                   </label>
-                  <input
-                    type="email"
+                  <textarea
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                   />
                 </div>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Organization
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  value={formData.organization}
-                  onChange={(e) => setFormData({...formData, organization: e.target.value})}
-                />
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
-              >
-                Send Message
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </button>
-            </form>
-          </div>
-
-          {/* Additional Contact Methods */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-8 text-white">
-              <h4 className="text-xl font-medium mb-6">Other Ways to Reach Us</h4>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Mail className="w-5 h-5 mr-3" />
-                  <span>support@innovationlab.com</span>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-5 h-5 mr-3" />
-                  <span>+1 (800) 123-4567</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <h4 className="text-xl font-medium text-gray-900 mb-4">Support Hours</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Monday - Friday</span>
-                  <span className="text-gray-900">24/7</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Saturday</span>
-                  <span className="text-gray-900">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Sunday</span>
-                  <span className="text-gray-900">9:00 AM - 6:00 PM</span>
-                </div>
-              </div>
+                <button
+                  type="submit"
+                  className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                >
+                  Submit Message
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
