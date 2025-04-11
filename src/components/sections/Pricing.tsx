@@ -8,7 +8,7 @@ const Pricing = () => {
     {
       name: "Starter",
       description: "Perfect for small research teams",
-      price: isAnnual ? 299 : 29,
+      price: isAnnual ? "100,00" : "25,000",
       features: [
         "Up to 10 research projects",
         "Basic collaboration tools",
@@ -22,7 +22,7 @@ const Pricing = () => {
     {
       name: "Professional",
       description: "Ideal for research departments",
-      price: isAnnual ? 999 : 99,
+      price: isAnnual ? "260,000" : "120,000",
       features: [
         "Up to 50 research projects",
         "Advanced collaboration suite",
@@ -119,7 +119,7 @@ const Pricing = () => {
                 <div className="mt-6">
                   {typeof plan.price === 'number' ? (
                     <>
-                      <span className="text-4xl font-bold text-gray-900">${plan.price}</span>
+                      <span className="text-4xl font-bold text-gray-900">₦{plan.price}</span>
                       <span className="text-gray-500">/month</span>
                     </>
                   ) : (
